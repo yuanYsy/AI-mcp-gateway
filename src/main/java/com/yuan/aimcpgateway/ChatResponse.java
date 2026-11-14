@@ -1,0 +1,32 @@
+package com.yuan.aimcpgateway;
+
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+public class ChatResponse {
+    private String id;
+    private String model;
+    private List<Choice> choices;
+    private Usage usage;
+    
+    @Data
+    public static class Choice {
+        private ChatMessage message;
+        private String finishReason;
+    }
+    
+    @Data
+    public static class ChatMessage {
+        private String role;
+        private String content;
+    }
+    
+    @Data
+    public static class Usage {
+        private int promptTokens;
+        private int completionTokens;
+        private int totalTokens;
+    }
+}

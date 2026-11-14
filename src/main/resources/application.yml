@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: llm-gateway
+  ai:
+    dashscope:
+      # 注意：Key 必须顶格写，不能有空格，不要带引号
+      api-key: sk-cbeb2e7802e248eda9b53c370c1525e5
+      chat:
+        options:
+          model: qwen-flash
+      retry:
+        max-attempts: 4                # 最多重试4次
+        backoff:
+          initial-interval: 2000ms    # 首次等待2秒
+          multiplier: 2.0             # 每次失败后等待时间翻倍 (2s -> 4s -> 8s)
+          max-interval: 10000ms       # 单次等待上限10秒
+server:
+  port: 8080
